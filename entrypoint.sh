@@ -227,6 +227,7 @@ zip -r9 "$zip_filename" *
 ls -R
 set_output outfile "$workdir"/out/AnyKernel3/"$zip_filename"
 msg "$workdir"/out/AnyKernel3/"$zip_filename"
+pwd
 exit 0
 
 if [[ -e "$workdir"/"$zipper_path" ]]; then
