@@ -217,7 +217,17 @@ if ! make O=out $arch_opts $make_opts $host_make_opts -j"$(nproc --all)"; then
 fi
 set_output elapsed_time "$(echo "$(date +%s)"-"$start_time" | bc)"
 msg "Packaging the kernel..."
-zip_filename="${name}-${tag}-${date}.zip"
+zip_filename="${name}-${date}.zip"
+
+cd "$workdir"/out
+git clone https://github.com/SOVIET-ANDROID/AnyKernel3.git && cd ./AnyKernel3
+cp "$workdir"/out/arch/"$arch"/boot/"$image" "$workdir"/out/AnyKernel3/"$image"
+rm -rf .git
+zip -r9 "$zip_filename" . -x .gitignore README.md || exit 127
+set_output outfile "$workdir"/out/AnyKernel3/"$zip_filename"
+msg "$workdir"/out/AnyKernel3/"$zip_filename"
+exit 0
+
 if [[ -e "$workdir"/"$zipper_path" ]]; then
     cp out/arch/"$arch"/boot/"$image" "$workdir"/"$zipper_path"/"$image"
     cd "$workdir"/"$zipper_path" || exit 127
