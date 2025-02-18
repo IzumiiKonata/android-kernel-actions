@@ -223,10 +223,8 @@ if [[ -e "$workdir"/"$zipper_path" ]]; then
     cd "$workdir"/"$zipper_path" || exit 127
     rm -rf .git
     zip -r9 "$zip_filename" . -x .gitignore README.md || exit 127
-    set_output outfile "$workdir"/"$zipper_path"/"$zip_filename"
-    msg "$workdir"/"$zipper_path"/"$zip_filename"
-    cd "$workdir"
-    ls -R
+    set_output outfile "$workdir"/"$zipper_path"/"$image"
+    msg "$workdir"/"$zipper_path"/"$image"
     cd "$workdir" || exit 127
     exit 0
 else
