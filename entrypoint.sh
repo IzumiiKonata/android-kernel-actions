@@ -225,7 +225,8 @@ cp "$workdir"/out/arch/"$arch"/boot/"$image" "$workdir"/out/AnyKernel3/"$image"
 rm -rf .git
 zip -r9 "$zip_filename" *
 ls -R
-set_output outfile "$workdir"/out/AnyKernel3/"$zip_filename"
+cd /
+set_output outfile github/workspace/out/AnyKernel3/"$zip_filename"
 msg "$workdir"/out/AnyKernel3/"$zip_filename"
 pwd
 exit 0
