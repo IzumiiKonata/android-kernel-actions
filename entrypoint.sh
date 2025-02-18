@@ -21,7 +21,7 @@ extract_tarball(){
     tar xf "$1" -C "$2"
 }
 
-workdir="$HOME"
+workdir="$GITHUB_WORKSPACE"
 arch="$1"
 compiler="$2"
 defconfig="$3"
