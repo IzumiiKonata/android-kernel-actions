@@ -225,6 +225,8 @@ if [[ -e "$workdir"/"$zipper_path" ]]; then
     zip -r9 "$zip_filename" . -x .gitignore README.md || exit 127
     set_output outfile "$workdir"/"$zipper_path"/"$zip_filename"
     msg "$workdir"/"$zipper_path"/"$zip_filename"
+    cd "$workdir"
+    ls -R
     cd "$workdir" || exit 127
     exit 0
 else
