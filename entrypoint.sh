@@ -223,7 +223,8 @@ cd "$workdir"/out
 git clone https://github.com/SOVIET-ANDROID/AnyKernel3.git && cd ./AnyKernel3
 cp "$workdir"/out/arch/"$arch"/boot/"$image" "$workdir"/out/AnyKernel3/"$image"
 rm -rf .git
-zip -r9 "$zip_filename" . -x .gitignore README.md || exit 127
+zip -r9 "$zip_filename" *
+ls -R
 set_output outfile "$workdir"/out/AnyKernel3/"$zip_filename"
 msg "$workdir"/out/AnyKernel3/"$zip_filename"
 exit 0
